@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from time import sleep
 import os
 import pyautogui
+import getpass
 
 def time(time_duration):
 
@@ -51,11 +52,13 @@ print("enter the path to the folder to store the screenshots in")
 print("or just press enter without entering a path so that a folder with the specified folder name will be created on the dektop automatically")
 print("and all the screenshots will be stored in that folder")
 
-if os.path.exists('C:\\Users\\gadit\\screenshots') == False:
-	os.mkdir('C:\\Users\\gadit\\screenshots')
+user = getpass.getuser()
+
+if os.path.exists('C:\\Users\\' + user + '\\screenshots') == False:
+	os.mkdir('C:\\Users\\' + user + '\\screenshots')
 
 folder_name = str(input("enter the name for the folder to save the screenshots taken in this session"))
-session_folder_path = 'C:\\Users\\gadit\\screenshots' + '\\' + folder_name
+session_folder_path = 'C:\\Users\\' + user + '\\screenshots' + '\\' + folder_name
 
 os.mkdir(session_folder_path)
 time_input = time(str(input("enter the time duration for which to capture the screenshots")))
